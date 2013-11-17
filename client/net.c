@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 struct net_ctx {
 	fd_set fds;
@@ -86,17 +87,23 @@ static void sk_buff_free(struct sk_buff *buff)
 
 int sk_buff_used(struct sk_buff *buff)
 {
-	return buff->write_pos - buff->read_pos;
+	int used = buff->write_pos - buff->read_pos;
+	assert(used >= 0);
+	return used;
 }
 
 static int sk_buff_remain(struct sk_buff *buff)
 {
-	return buff->len - (buff->write_pos - buff->read_pos);
+	int remain = buff->len - (buff->write_pos - buff->read_pos);
+	assert(remain >= 0);
+	return remain;
 }
 
 static int sk_buff_tail_remain(struct sk_buff *buff)
 {
-	return buff->len - buff->write_pos;
+	int remain = buff->len - buff->write_pos;
+	assert(remain >= 0);
+	return remain;
 }
 
 static int sk_buff_expand(struct sk_buff *buff, int need_len)
@@ -133,9 +140,13 @@ static int sk_buff_push(struct sk_buff *buff, char *data, int len)
 	}
 	if (len > sk_buff_tail_remain(buff)) {
 		used = sk_buff_used(buff);
-		memmove(buff->buffer, buff->buffer + buff->read_pos, buff->read_pos);
 		buff->read_pos = 0;
-		buff->write_pos = used;
+		buff->write_pos = 0;
+		if (used > 0)
+		{
+			memmove(buff->buffer, buff->buffer + buff->read_pos, used);
+			buff->write_pos = used;
+		}
 	}
 	memcpy(buff->buffer + buff->write_pos, data, len);
 	buff->write_pos += len;

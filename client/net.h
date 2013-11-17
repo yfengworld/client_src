@@ -20,7 +20,6 @@ typedef void (*connect_cb_func)(conn *);
 typedef void (*disconnect_cb_func)(conn *);
 
 typedef struct {
-    char type;
     rpc_cb_func rpc;
     connect_cb_func connect;
     disconnect_cb_func disconnect;

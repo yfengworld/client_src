@@ -22,7 +22,7 @@ int create_msg(unsigned short cmd, S *s, unsigned char **msg, size_t *sz)
     *sz = MSG_HEAD_SIZE + body_sz;
     *msg = (unsigned char *)malloc(*sz);
     if (NULL == *msg) {
-        merror("msg alloc failed!");
+        fprintf(stderr, "msg alloc failed!\n");
         return -1;
     }
 
@@ -42,14 +42,14 @@ template<typename S>
 int msg_body(unsigned char *src, size_t src_sz, S *s)
 {
     if (MSG_HEAD_SIZE > src_sz) {
-        merror("msg less than head size!");
+        fprintf(stderr, "msg less than head size!\n");
         return -1;
     }
     unsigned short *cur = (unsigned short *)src;
     unsigned int len = ntohs(*((unsigned int *)cur));
     cur += 2;
     if (MSG_HEAD_SIZE + len != src_sz) {
-        merror("msg length error!");
+        fprintf(stderr, "msg length error!\n");
         return -1;
     }
 

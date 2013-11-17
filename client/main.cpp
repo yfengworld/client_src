@@ -15,7 +15,6 @@ int main(int argc, char **argv)
 	}
 	
 	login_cb_init(&login_cb);
-	server_cb_init(&server_cb);
 	conn *c = conn_new(&login_cb);
 	if (NULL == c) {
 		return 1;
@@ -31,6 +30,8 @@ int main(int argc, char **argv)
 
 	while (1)
 		net_loop();
+	
+	conn_free(c);
 
 	net_release();
 	return 0;

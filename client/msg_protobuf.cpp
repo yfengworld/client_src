@@ -20,7 +20,7 @@ int create_msg(unsigned short cmd, unsigned char **msg, size_t *sz)
 int message_head(unsigned char *src, size_t src_sz, msg_head *h)
 {
     if (MSG_HEAD_SIZE > src_sz) {
-        fprintf(stderr, "msg less than head size!");
+        fprintf(stderr, "msg less than head size!\n");
         return -1;
     }
 
