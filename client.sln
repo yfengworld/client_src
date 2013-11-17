@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{A087D127-250F-4D70-8301-7E32A4658582}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F} = {1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protobuf", "protobuf\protobuf.vcxproj", "{1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A087D127-250F-4D70-8301-7E32A4658582}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A087D127-250F-4D70-8301-7E32A4658582}.Debug|Win32.Build.0 = Debug|Win32
+		{A087D127-250F-4D70-8301-7E32A4658582}.Release|Win32.ActiveCfg = Release|Win32
+		{A087D127-250F-4D70-8301-7E32A4658582}.Release|Win32.Build.0 = Release|Win32
+		{1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F}.Debug|Win32.Build.0 = Debug|Win32
+		{1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F}.Release|Win32.ActiveCfg = Release|Win32
+		{1DB8E0EA-439B-4DAE-AA33-B1CC8923B17F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
